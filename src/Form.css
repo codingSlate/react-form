@@ -3,7 +3,7 @@
 }
 form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 form label,
 form input,
@@ -12,4 +12,9 @@ form select,
 form legend,
 form button {
   display: block;
+}
+form input,
+form button {
+  margin-bottom: 0.3em;
+  padding: 0.4em;
 }
