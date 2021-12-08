@@ -10,19 +10,22 @@ form label,
 form input,
 form textarea,
 form select,
-form legend,
+form fieldset,
 form button {
   display: block;
 }
 form input,
 form textarea,
 form select,
-legend input, legend label ,
+legend input,
+form fieldset,
+legend label,
 form button {
   margin-bottom: 0.3em;
   padding: 0.4em;
 }
 
-legend input, legend label {
+fieldset input,
+fieldset label {
   display: inline-block;
 }

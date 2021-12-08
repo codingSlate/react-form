@@ -76,7 +76,8 @@ const Form = () => {
         </select>
 
         {/* checkbox */}
-        <legend>
+        <fieldset>
+        <legend> Select your food  </legend>
           <input
             type="checkbox"
             checked={form.breakfast}
@@ -101,7 +102,7 @@ const Form = () => {
             onChange={onChangeHandler}
           />
           <label htmlFor="dinner">Dinner</label>
-        </legend>
+        </fieldset>
 
         <button type="submit">Submit</button>
         <button type="button" onClick={onResetHandler}>
