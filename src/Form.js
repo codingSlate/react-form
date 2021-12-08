@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import './Form.css';
 const initFields = {
   fname: '',
@@ -21,8 +21,36 @@ const loadDatatoFields = {
   shirtSize: 'l',
 };
 
-const Form = () => {
-  const [form, setForm] = useState(initFields);
+// -------------------------------------------------------------------------------------
+const FormContainer = () => {
+  const [data, setData] = useState(initFields);
+  const onSubmitHandler = (formState) => {
+    console.log(formState);
+    // setData(formState);
+  };
+
+  const onResetHandler = () => {
+    // setForm(initFields);
+    setData(loadDatatoFields);
+  };
+
+  return (
+    <Fragment>
+      <Form onSubmit={onSubmitHandler} data={data} />
+      <button type="button" onClick={onResetHandler}>
+        Load Data
+      </button>
+    </Fragment>
+  );
+};
+// -------------------------------------------------------------------------------------
+const Form = ({ onSubmit, data }) => {
+  const [formState, setFormState] = useState(initFields);
+  // const [form, setForm] = useState(initFields);
+  useEffect(() => {
+    setFormState(data);
+  }, [data]);
+
   const onChangeHandler = (e) => {
     const value =
       e.target.type === 'checkbox' ||
@@ -31,21 +59,15 @@ const Form = () => {
         ? e.target.checked
         : e.target.value;
 
-    setForm({ ...form, [e.target.name]: value });
+    setFormState({ ...formState, [e.target.name]: value });
   };
 
   // console form
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(form);
+    onSubmit(formState);
   };
-
-  const onResetHandler = () => {
-    // setForm(initFields);
-    setForm(loadDatatoFields);
-  };
-
   return (
     <>
       <form onSubmit={onSubmitHandler}>
@@ -55,7 +77,7 @@ const Form = () => {
           id="fname"
           onChange={onChangeHandler}
           name="fname"
-          value={form.fname}
+          value={formState.fname}
         />
         <label htmlFor="lname">Last Name</label>
         <input
@@ -63,7 +85,7 @@ const Form = () => {
           id="lname"
           onChange={onChangeHandler}
           name="lname"
-          value={form.lname}
+          value={formState.lname}
         />
         <label htmlFor="msg">Message</label>
         <textarea
@@ -71,14 +93,14 @@ const Form = () => {
           id="msg"
           onChange={onChangeHandler}
           name="msg"
-          value={form.msg}
+          value={formState.msg}
         ></textarea>
 
         <label htmlFor="course">Select one</label>
         <select
           name="course"
           id="course"
-          value={form.course}
+          value={formState.course}
           onChange={onChangeHandler}
         >
           <option>Select your course</option>
@@ -92,7 +114,7 @@ const Form = () => {
           <legend> Select your food </legend>
           <input
             type="checkbox"
-            checked={form.breakfast}
+            checked={formState.breakfast}
             id="breakfast"
             name="breakfast"
             onChange={onChangeHandler}
@@ -100,7 +122,7 @@ const Form = () => {
           <label htmlFor="breakfast">Breakfast</label>
           <input
             type="checkbox"
-            checked={form.lunch}
+            checked={formState.lunch}
             id="lunch"
             name="lunch"
             onChange={onChangeHandler}
@@ -108,7 +130,7 @@ const Form = () => {
           <label htmlFor="lunch">Lunch</label>
           <input
             type="checkbox"
-            checked={form.dinner}
+            checked={formState.dinner}
             id="dinner"
             name="dinner"
             onChange={onChangeHandler}
@@ -124,7 +146,7 @@ const Form = () => {
             id="sizeS"
             value="s"
             name="shirtSize"
-            checked={form.shirtSize === 's'}
+            checked={formState.shirtSize === 's'}
             onChange={onChangeHandler}
           />
           <label htmlFor="sizeS">Small</label>
@@ -133,7 +155,7 @@ const Form = () => {
             id="sizeM"
             value="m"
             name="shirtSize"
-            checked={form.shirtSize === 'm'}
+            checked={formState.shirtSize === 'm'}
             onChange={onChangeHandler}
           />
           <label htmlFor="sizeM">Medium</label>
@@ -142,16 +164,14 @@ const Form = () => {
             id="sizeL"
             value="l"
             name="shirtSize"
-            checked={form.shirtSize === 'l'}
+            checked={formState.shirtSize === 'l'}
             onChange={onChangeHandler}
           />
           <label htmlFor="sizeL">Large</label>
         </fieldset>
 
         <button type="submit">Submit</button>
-        <button type="button" onClick={onResetHandler}>
-          Load Data
-        </button>
+
         {/* <button type="button" onClick={onResetHandler}>
           Reset
         </button> */}
@@ -159,4 +179,4 @@ const Form = () => {
     </>
   );
 };
-export default Form;
+export default FormContainer;
