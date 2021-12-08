@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import './Form.css';
 
-const Form =()=>{
-return <>
-
-</>
-}
-export default Form
+const Form = () => {
+  return (
+    <>
+      <form>
+        <label htmlFor="name">Name</label>
+        <input type="text" />
+      </form>
+    </>
+  );
+};
+export default Form;

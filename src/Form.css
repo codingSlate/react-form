@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+form {
+  display: flex;
+  flex-direction: row;
+}
+form label,
+form input,
+form textarea,
+form select,
+form legend,
+form button {
+  display: block;
+}
