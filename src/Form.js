@@ -10,6 +10,16 @@ const initFields = {
   dinner: false,
   shirtSize: '',
 };
+const loadDatatoFields = {
+  fname: 'Kiran',
+  lname: 'Gowda',
+  msg: 'I am fine and excited',
+  course: 'bca',
+  breakfast: true,
+  lunch: false,
+  dinner: false,
+  shirtSize: 'l',
+};
 
 const Form = () => {
   const [form, setForm] = useState(initFields);
@@ -32,7 +42,8 @@ const Form = () => {
   };
 
   const onResetHandler = () => {
-    setForm(initFields);
+    // setForm(initFields);
+    setForm(loadDatatoFields);
   };
 
   return (
@@ -139,8 +150,11 @@ const Form = () => {
 
         <button type="submit">Submit</button>
         <button type="button" onClick={onResetHandler}>
-          Reset
+          Load Data
         </button>
+        {/* <button type="button" onClick={onResetHandler}>
+          Reset
+        </button> */}
       </form>
     </>
   );
