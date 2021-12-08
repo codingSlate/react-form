@@ -8,6 +8,7 @@ const initFields = {
   breakfast: false,
   lunch: false,
   dinner: false,
+  shirtSize: '',
 };
 
 const Form = () => {
@@ -77,7 +78,7 @@ const Form = () => {
 
         {/* checkbox */}
         <fieldset>
-        <legend> Select your food  </legend>
+          <legend> Select your food </legend>
           <input
             type="checkbox"
             checked={form.breakfast}
@@ -105,6 +106,36 @@ const Form = () => {
         </fieldset>
 
         {/* radio  */}
+        <fieldset>
+          <legend>T-shirt size</legend>
+          <input
+            type="radio"
+            id="sizeS"
+            value="s"
+            name="shirtSize"
+            checked={form.shirtSize === 's'}
+            onChange={onChangeHandler}
+          />
+          <label htmlFor="sizeS">Small</label>
+          <input
+            type="radio"
+            id="sizeM"
+            value="m"
+            name="shirtSize"
+            checked={form.shirtSize === 'm'}
+            onChange={onChangeHandler}
+          />
+          <label htmlFor="sizeM">Medium</label>
+          <input
+            type="radio"
+            id="sizeL"
+            value="l"
+            name="shirtSize"
+            checked={form.shirtSize === 'l'}
+            onChange={onChangeHandler}
+          />
+          <label htmlFor="sizeL">Large</label>
+        </fieldset>
 
         <button type="submit">Submit</button>
         <button type="button" onClick={onResetHandler}>
