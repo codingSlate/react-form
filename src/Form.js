@@ -4,12 +4,23 @@ const initFields = {
   fname: '',
   lname: '',
   msg: '',
+  course: '',
+  breakfast: false,
+  lunch: false,
+  dinner: false,
 };
 
 const Form = () => {
   const [form, setForm] = useState(initFields);
   const onChangeHandler = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const value =
+      e.target.type === 'checkbox' ||
+      e.target.type === 'checkbox' ||
+      e.target.type === 'checkbox'
+        ? e.target.checked
+        : e.target.value;
+
+    setForm({ ...form, [e.target.name]: value });
   };
 
   // console form
@@ -50,6 +61,47 @@ const Form = () => {
           name="msg"
           value={form.msg}
         ></textarea>
+
+        <label htmlFor="course">Select one</label>
+        <select
+          name="course"
+          id="course"
+          value={form.course}
+          onChange={onChangeHandler}
+        >
+          <option>Select your course</option>
+          <option value="mac">MCA</option>
+          <option value="btech">B.Tech</option>
+          <option value="bca">BCA</option>
+        </select>
+
+        {/* checkbox */}
+        <legend>
+          <input
+            type="checkbox"
+            checked={form.breakfast}
+            id="breakfast"
+            name="breakfast"
+            onChange={onChangeHandler}
+          />
+          <label htmlFor="breakfast">Breakfast</label>
+          <input
+            type="checkbox"
+            checked={form.lunch}
+            id="lunch"
+            name="lunch"
+            onChange={onChangeHandler}
+          />
+          <label htmlFor="lunch">Lunch</label>
+          <input
+            type="checkbox"
+            checked={form.dinner}
+            id="dinner"
+            name="dinner"
+            onChange={onChangeHandler}
+          />
+          <label htmlFor="dinner">Dinner</label>
+        </legend>
 
         <button type="submit">Submit</button>
         <button type="button" onClick={onResetHandler}>

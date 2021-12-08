@@ -16,7 +16,13 @@ form button {
 }
 form input,
 form textarea,
+form select,
+legend input, legend label ,
 form button {
   margin-bottom: 0.3em;
   padding: 0.4em;
+}
+
+legend input, legend label {
+  display: inline-block;
 }
