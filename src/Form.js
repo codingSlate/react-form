@@ -104,6 +104,8 @@ const Form = () => {
           <label htmlFor="dinner">Dinner</label>
         </fieldset>
 
+        {/* radio  */}
+
         <button type="submit">Submit</button>
         <button type="button" onClick={onResetHandler}>
           Reset
