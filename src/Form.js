@@ -1,5 +1,7 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import './Form.css';
+import Input from './Input';
+
 const initFields = {
   fname: '',
   lname: '',
@@ -71,30 +73,31 @@ const Form = ({ onSubmit, data }) => {
   return (
     <>
       <form onSubmit={onSubmitHandler}>
-        <label htmlFor="fname">First Name</label>
-        <input
+        <Input
+          labelText="First Name"
           type="text"
           id="fname"
           onChange={onChangeHandler}
           name="fname"
           value={formState.fname}
         />
-        <label htmlFor="lname">Last Name</label>
-        <input
+        <Input
+          labelText="Last Name"
           type="text"
           id="lname"
           onChange={onChangeHandler}
           name="lname"
           value={formState.lname}
         />
-        <label htmlFor="msg">Message</label>
-        <textarea
+        <Input
+          labelText="Message"
           row="10"
+          type="textarea"
           id="msg"
           onChange={onChangeHandler}
           name="msg"
           value={formState.msg}
-        ></textarea>
+        />
 
         <label htmlFor="course">Select one</label>
         <select
